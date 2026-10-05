@@ -420,4 +420,41 @@
         function checkAnswer(btn, isCorrect) {
             var parent = btn.parentElement;
             var buttons = parent.querySelectorAll('.opt-btn');
-            buttons.forEach(f
+            buttons.forEach(function(b) { b.disabled = true; });
+
+            if (isCorrect) {
+                btn.classList.add('correct');
+                userScore += 10;
+                document.getElementById('stat-score').innerText = userScore;
+            } else {
+                btn.classList.add('wrong');
+            }
+        }
+
+        function saveNote() {
+            var val = document.getElementById('userNote').value;
+            localStorage.setItem('ruang_user_note', val);
+            alert('Catatan tersimpan!');
+        }
+
+        function speakText(btn) {
+            var text = btn.parentElement.parentElement.innerText;
+            window.speechSynthesis.cancel();
+            var utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = 'id-ID';
+            window.speechSynthesis.speak(utterance);
+        }
+
+        function searchContent() {
+            var query = document.getElementById('searchInput').value.toLowerCase();
+            var items = document.querySelectorAll('.searchable');
+            items.forEach(function(card) {
+                card.style.display = card.innerText.toLowerCase().includes(query) ? 'block' : 'none';
+            });
+        }
+
+        // Jalankan awal
+        renderContent();
+    </script>
+</body>
+</html>
