@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portal Belajar PTS - Kelas 7</title>
+    <title>Portal Belajar PTS - Kelas 7 Super Complete</title>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -16,61 +16,83 @@
             --danger: #ef4444;
             --text-main: #f8fafc;
             --text-sub: #94a3b8;
+            --border: #334155;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
+        .light-theme {
+            --bg-base: #f1f5f9;
+            --bg-card: #ffffff;
+            --primary: #0284c7;
+            --accent: #d97706;
+            --success: #059669;
+            --danger: #dc2626;
+            --text-main: #0f172a;
+            --text-sub: #475569;
+            --border: #cbd5e1;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; transition: background 0.3s, color 0.3s; }
         body { background-color: var(--bg-base); color: var(--text-main); padding: 15px; }
         .container { max-width: 900px; margin: 0 auto; }
 
-        header { text-align: center; margin-bottom: 20px; padding: 15px; background: var(--bg-card); border-radius: 16px; border: 1px solid #334155; }
-        header h1 { color: var(--primary); font-size: 1.6rem; font-weight: 800; }
-        header p { color: var(--text-sub); font-size: 0.9rem; margin-top: 4px; }
+        header { text-align: center; margin-bottom: 15px; padding: 15px; background: var(--bg-card); border-radius: 16px; border: 1px solid var(--border); position: relative; }
+        header h1 { color: var(--primary); font-size: 1.5rem; font-weight: 800; }
+        header p { color: var(--text-sub); font-size: 0.85rem; margin-top: 4px; }
+        
+        .theme-toggle { position: absolute; top: 15px; right: 15px; background: none; border: none; color: var(--accent); font-size: 1.2rem; cursor: pointer; }
 
         .search-box { margin-bottom: 15px; }
-        .search-box input { width: 100%; padding: 12px 16px; border-radius: 12px; border: 1px solid #334155; background: #0f172a; color: #fff; font-size: 0.95rem; }
+        .search-box input { width: 100%; padding: 12px 16px; border-radius: 12px; border: 1px solid var(--border); background: var(--bg-card); color: var(--text-main); font-size: 0.95rem; }
         .search-box input:focus { outline: none; border-color: var(--primary); }
 
         nav { display: flex; gap: 8px; margin-bottom: 15px; }
-        .nav-btn { flex: 1; padding: 10px; border: none; background: var(--bg-card); color: var(--text-sub); border-radius: 10px; cursor: pointer; font-weight: 700; font-size: 0.9rem; border: 1px solid #334155; }
-        .nav-btn.active { background: var(--primary); color: #0f172a; border-color: var(--primary); }
+        .nav-btn { flex: 1; padding: 10px; border: none; background: var(--bg-card); color: var(--text-sub); border-radius: 10px; cursor: pointer; font-weight: 700; font-size: 0.85rem; border: 1px solid var(--border); }
+        .nav-btn.active { background: var(--primary); color: #fff; border-color: var(--primary); }
 
         .subject-bar { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 8px; margin-bottom: 15px; }
-        .sub-btn { padding: 8px 14px; border-radius: 20px; border: 1px solid #334155; background: var(--bg-card); color: var(--text-main); cursor: pointer; white-space: nowrap; font-size: 0.85rem; font-weight: 600; }
-        .sub-btn.active { background: var(--accent); color: #0f172a; border-color: var(--accent); }
+        .sub-btn { padding: 8px 14px; border-radius: 20px; border: 1px solid var(--border); background: var(--bg-card); color: var(--text-main); cursor: pointer; white-space: nowrap; font-size: 0.85rem; font-weight: 600; }
+        .sub-btn.active { background: var(--accent); color: #fff; border-color: var(--accent); }
 
         .panel { display: none; }
         .panel.active { display: block; }
 
-        .card { background: var(--bg-card); border-radius: 14px; padding: 18px; margin-bottom: 15px; border: 1px solid #334155; }
-        .card h3 { color: var(--accent); margin-bottom: 10px; font-size: 1.1rem; border-bottom: 1px dashed #334155; padding-bottom: 6px; }
-        .card ul { padding-left: 20px; line-height: 1.6; color: #e2e8f0; font-size: 0.95rem; }
+        .card { background: var(--bg-card); border-radius: 14px; padding: 18px; margin-bottom: 15px; border: 1px solid var(--border); }
+        .card h3 { color: var(--accent); margin-bottom: 10px; font-size: 1.1rem; border-bottom: 1px dashed var(--border); padding-bottom: 6px; }
+        .card ul { padding-left: 20px; line-height: 1.6; color: var(--text-main); font-size: 0.95rem; }
         .card li { margin-bottom: 6px; }
 
-        .opt-btn { width: 100%; text-align: left; padding: 10px 14px; margin-top: 8px; background: #0f172a; border: 1px solid #334155; color: #fff; border-radius: 8px; cursor: pointer; font-size: 0.9rem; }
-        .opt-btn:hover { border-color: var(--primary); }
-        .opt-btn.correct { background: rgba(16, 185, 129, 0.2); border-color: var(--success); color: #34d399; }
-        .opt-btn.wrong { background: rgba(239, 68, 68, 0.2); border-color: var(--danger); color: #f87171; }
+        .quiz-header { display: flex; justify-content: space-between; align-items: center; background: var(--bg-card); padding: 12px 16px; border-radius: 12px; border: 1px solid var(--border); margin-bottom: 15px; font-weight: 700; }
+        .timer { color: var(--danger); font-size: 1rem; }
+        .score-board { color: var(--success); font-size: 1rem; }
 
-        textarea { width: 100%; height: 80px; background: #0f172a; border: 1px solid #334155; color: #fff; border-radius: 8px; padding: 10px; margin-top: 10px; font-size: 0.9rem; }
-        .action-btn { background: var(--primary); color: #0f172a; font-weight: 700; border: none; padding: 8px 14px; border-radius: 6px; cursor: pointer; margin-top: 10px; font-size: 0.85rem; }
+        .opt-btn { width: 100%; text-align: left; padding: 10px 14px; margin-top: 8px; background: var(--bg-base); border: 1px solid var(--border); color: var(--text-main); border-radius: 8px; cursor: pointer; font-size: 0.9rem; }
+        .opt-btn:hover { border-color: var(--primary); }
+        .opt-btn.correct { background: rgba(16, 185, 129, 0.2); border-color: var(--success); color: var(--success); font-weight: bold; }
+        .opt-btn.wrong { background: rgba(239, 68, 68, 0.2); border-color: var(--danger); color: var(--danger); }
+
+        textarea { width: 100%; height: 90px; background: var(--bg-base); border: 1px solid var(--border); color: var(--text-main); border-radius: 8px; padding: 10px; margin-top: 10px; font-size: 0.9rem; }
+        .action-btn { background: var(--primary); color: #fff; font-weight: 700; border: none; padding: 8px 14px; border-radius: 6px; cursor: pointer; margin-top: 10px; font-size: 0.85rem; }
+        .reset-btn { background: var(--danger); color: #fff; font-weight: 700; border: none; padding: 8px 14px; border-radius: 6px; cursor: pointer; font-size: 0.85rem; }
     </style>
 </head>
 <body>
 
 <div class="container">
     <header>
-        <h1><i class="fa-solid fa-book-bookmark"></i> PORTAL BELAJAR PTS KELAS 7</h1>
-        <p>Materi & Latihan Soal Interaktif 5 Mata Pelajaran</p>
+        <button class="theme-toggle" onclick="toggleTheme()"><i class="fa-solid fa-moon"></i></button>
+        <h1><i class="fa-solid fa-graduation-cap"></i> PORTAL PTS KELAS 7</h1>
+        <p>Materi, Catatan & Bank Soal Interaktif Lengkap</p>
     </header>
 
     <div class="search-box">
-        <input type="text" id="searchInput" placeholder="Cari materi atau kata kunci..." oninput="searchContent()">
+        <input type="text" id="searchInput" placeholder="🔍 Cari materi, kata kunci, atau soal..." oninput="searchContent()">
     </div>
 
     <nav>
         <button class="nav-btn active" onclick="switchTab('rangkuman')">Rangkuman</button>
         <button class="nav-btn" onclick="switchTab('quiz')">Soal PG</button>
         <button class="nav-btn" onclick="switchTab('essay')">Soal Esai</button>
+        <button class="nav-btn" onclick="switchTab('notes')">Catatan</button>
     </nav>
 
     <div class="subject-bar">
@@ -81,137 +103,181 @@
         <button class="sub-btn" onclick="switchSubject('bing')">B. Inggris</button>
     </div>
 
-    <!-- PANEL RANGKUMAN -->
+    <!-- RANGKUMAN -->
     <div id="panel-rangkuman" class="panel active">
-        <!-- PPKn -->
         <div id="rangkuman-pkn" class="sub-panel">
             <div class="card searchable">
-                <h3>UUD NRI Tahun 1945 & Bhinneka Tunggal Ika</h3>
+                <h3>UUD NRI 1945 & Norma Masyarakat</h3>
                 <ul>
-                    <li><b>Kedudukan UUD 1945:</b> Merupakan hukum dasar tertulis tertinggi di Indonesia yang menjadi acuan peraturan di bawahnya.</li>
-                    <li><b>Amandemen UUD 1945:</b> Telah mengalami 4 kali perubahan (1999–2002) oleh MPR.</li>
-                    <li><b>Bhinneka Tunggal Ika:</b> Semboyan bangsa yang berarti "Berbeda-beda tetapi tetap satu jua", menekankan persatuan dalam keberagaman suku, agama, ras, dan antargolongan (SARA).</li>
+                    <li><b>UUD NRI 1945:</b> Hukum dasar tertulis tertinggi di Indonesia. Merupakan pedoman penyelenggaraan negara.</li>
+                    <li><b>Amandemen UUD:</b> Dilakukan oleh MPR sebanyak 4 kali (1999, 2000, 2001, 2002).</li>
+                    <li><b>4 Jenis Norma:</b> Norma Agama (sanksi dosa), Kesusilaan (sanksi penyesalan), Kesopanan (sanksi dicemooh), dan Hukum (sanksi tegas/penjara).</li>
+                    <li><b>Bhinneka Tunggal Ika:</b> Semboyan persatuan dalam Kakawin Sutasoma karya Mpu Tantular.</li>
                 </ul>
             </div>
         </div>
 
-        <!-- BAHASA INDONESIA -->
         <div id="rangkuman-bindo" class="sub-panel" style="display:none;">
             <div class="card searchable">
-                <h3>Teks Prosedur & Teks Laporan Hasil Observasi (LHO)</h3>
+                <h3>Teks Prosedur & Laporan Hasil Observasi (LHO)</h3>
                 <ul>
-                    <li><b>Teks Prosedur:</b> Teks yang berisi langkah-langkah/tahapan untuk membuat atau melakukan sesuatu. Memiliki struktur: Tujuan, Bahan/Alat, dan Langkah-langkah. Ciri bahasanya menggunakan kata kerja imperatif (perintah).</li>
-                    <li><b>Teks LHO:</b> Teks yang menyajikan informasi berdasarkan hasil pengamatan secara objektif dan faktual. Memiliki struktur: Pernyataan Umum, Deskripsi Bagian, dan Deskripsi Manfaat.</li>
+                    <li><b>Teks Prosedur:</b> Berisi langkah-langkah membuat/melakukan sesuatu secara sistematis.</li>
+                    <li><b>Struktur Teks Prosedur:</b> Tujuan $\rightarrow$ Material (Alat/Bahan) $\rightarrow$ Langkah-langkah $\rightarrow$ Penutup.</li>
+                    <li><b>Teks LHO:</b> Teks berisi hasil pengamatan yang bersifat objektif, faktual, dan nyata.</li>
+                    <li><b>Struktur LHO:</b> Pernyataan Umum $\rightarrow$ Deskripsi Bagian $\rightarrow$ Deskripsi Manfaat.</li>
                 </ul>
             </div>
         </div>
 
-        <!-- AKIDAH AKHLAK -->
         <div id="rangkuman-akidah" class="sub-panel" style="display:none;">
             <div class="card searchable">
                 <h3>Asmaul Husna & Akhlak Terpuji</h3>
                 <ul>
-                    <li><b>Al-'Alim:</b> Maha Mengetahui segala sesuatu.</li>
-                    <li><b>Al-Khabir:</b> Maha Teliti/Waspada terhadap segala detail.</li>
-                    <li><b>As-Sami':</b> Maha Mendengar segala bisikan dan doa.</li>
-                    <li><b>Al-Bashir:</b> Maha Melihat segala perbuatan makhluk-Nya.</li>
-                    <li><b>Akhlak Terpuji:</b> Taubat (kembali ke jalan benar), Ta'at (patuh pada perintah Allah), Istiqamah (teguh berdiri dalam kebaikan), dan Ikhlas (tulus karena Allah).</li>
+                    <li><b>Al-'Alim:</b> Maha Mengetahui segalanya tanpa batas.</li>
+                    <li><b>Al-Khabir:</b> Maha Teliti/Waspada terhadap hal tersembunyi.</li>
+                    <li><b>As-Sami':</b> Maha Mendengar segala doa dan ucapan.</li>
+                    <li><b>Al-Bashir:</b> Maha Melihat seluruh perbuatan makhluk.</li>
+                    <li><b>Akhlak Terpuji:</b> Taubat (menyesali dosa), Ta'at (patuh), Istiqamah (konsisten), Ikhlas (tanpa pamrih).</li>
                 </ul>
             </div>
         </div>
 
-        <!-- IPS -->
         <div id="rangkuman-ips" class="sub-panel" style="display:none;">
             <div class="card searchable">
                 <h3>Lokasi, Cuaca, Geologi, & Ekonomi</h3>
                 <ul>
-                    <li><b>Lokasi Absolut:</b> Letak berdasarkan garis koordinat ($6^\circ\text{LU}-11^\circ\text{LS}$ dan $95^\circ\text{BT}-141^\circ\text{BT}$).</li>
-                    <li><b>Angin Muson:</b> Muson Barat (Hujan) & Muson Timur (Kemarau).</li>
-                    <li><b>Letak Geologis:</b> Pertemuan 3 lempeng tektonik utama. Abu vulkanik hasil erupsi membuat tanah sangat subur untuk pertanian.</li>
-                    <li><b>Mitigasi Bencana:</b> Rumah Panggung kayu fleksibel meredam guncangan gempa.</li>
-                    <li><b>Ekonomi:</b> Semakin jauh jarak distribusi, semakin tinggi biaya transportasi, sehingga harga barang makin mahal.</li>
+                    <li><b>Lokasi Absolut:</b> Letak berdasarkan garis astronomis ($6^\circ\text{LU}-11^\circ\text{LS}$ & $95^\circ\text{BT}-141^\circ\text{BT}$).</li>
+                    <li><b>Angin Muson:</b> Muson Barat (Hujan: Okt-Apr) & Muson Timur (Kemarau: Apr-Okt).</li>
+                    <li><b>Mitigasi Bencana:</b> Rumah Panggung kayu fleksibel meredam guncangan gempa bumi.</li>
+                    <li><b>Distribusi Ekonomi:</b> Semakin jauh jarak distribusi barang, semakin mahal biaya transportasi dan harga jualnya.</li>
                 </ul>
             </div>
         </div>
 
-        <!-- BAHASA INGGRIS -->
         <div id="rangkuman-bing" class="sub-panel" style="display:none;">
             <div class="card searchable">
-                <h3>Introduction, Favorite Food, & Present Tense</h3>
+                <h3>Introduction, Food & Simple Present Tense</h3>
                 <ul>
-                    <li><b>Introduction:</b> "Hello, let me introduce myself. I am 12 years old. I live in..."</li>
-                    <li><b>Favorite Food & Taste:</b> Sweet (Manis), Salty (Asin), Spicy (Pedas), Savory (Gurih), Sour (Asam). "My favorite food is fried chicken."</li>
+                    <li><b>Introducing Oneself:</b> "Hello, my name is... I am 12 years old."</li>
+                    <li><b>Taste Vocabulary:</b> Sweet (Manis), Salty (Asin), Spicy (Pedas), Bitter (Pahit), Sour (Asam).</li>
                     <li><b>Simple Present Tense:</b> Digunakan untuk kebiasaan/fakta.
-                        <br>• (+) $S + V_1(s/es) \rightarrow$ <i>She eats cake.</i>
-                        <br>• (-) $S + \text{does/do not} + V_1 \rightarrow$ <i>He does not like spicy food.</i>
+                        <br>• (+) $S + V_1(s/es) \rightarrow$ <i>He eats rice.</i>
+                        <br>• (-) $S + \text{does/do not} + V_1 \rightarrow$ <i>They do not play games.</i>
                     </li>
                 </ul>
             </div>
         </div>
     </div>
 
-    <!-- PANEL QUIZ PG -->
+    <!-- QUIZ PG -->
     <div id="panel-quiz" class="panel">
+        <div class="quiz-header">
+            <span class="timer"><i class="fa-solid fa-stopwatch"></i> Waktu: <span id="time-display">15:00</span></span>
+            <span class="score-board"><i class="fa-solid fa-trophy"></i> Skor: <span id="score-display">0</span></span>
+            <button class="reset-btn" onclick="resetQuiz()"><i class="fa-solid fa-rotate-right"></i> Reset</button>
+        </div>
         <div id="quiz-container"></div>
     </div>
 
-    <!-- PANEL ESAI -->
+    <!-- ESAI -->
     <div id="panel-essay" class="panel">
         <div id="essay-container"></div>
+    </div>
+
+    <!-- CATATAN -->
+    <div id="panel-notes" class="panel">
+        <div class="card">
+            <h3><i class="fa-solid fa-note-sticky"></i> Catatan Belajar Pribadi</h3>
+            <p style="color:var(--text-sub); font-size:0.85rem; margin-bottom:8px;">Ketik catatan pentingmu di sini. Otomatis tersimpan di HP kamu!</p>
+            <textarea id="userNote" placeholder="Tulis ringkasan atau pengingat di sini..."></textarea>
+            <button class="action-btn" onclick="saveNote()"><i class="fa-solid fa-floppy-disk"></i> Simpan Catatan</button>
+            <span id="noteSavedMsg" style="color:var(--success); font-size:0.85rem; margin-left:10px; display:none;">Tersimpan!</span>
+        </div>
     </div>
 </div>
 
 <script>
     let currentSubject = 'pkn';
     let currentTab = 'rangkuman';
+    let score = 0;
+    let timerSeconds = 900;
+    let timerInterval = null;
 
-    // Jawaban PG Bervariasi (A, B, C, D)
     const quizData = {
         pkn: [
-            { q: "Hukum dasar tertulis tertinggi yang berlaku di NKRI adalah...", opts: ["A. Pancasila", "B. UUD NRI Tahun 1945", "C. Peraturan Presiden", "D. Keputusan Menteri"], ans: 1 }, // Kunci: B
-            { q: "Lembaga negara yang berwenang melakukan amandemen/perubahan terhadap UUD 1945 adalah...", opts: ["A. Presiden", "B. DPR", "C. MA", "D. MPR"], ans: 3 }, // Kunci: D
-            { q: "Semboyan Bhinneka Tunggal Ika mengajarkan bangsa Indonesia untuk...", opts: ["A. Bersatu dalam keberagaman", "B. Mementingkan suku sendiri", "C. Menolak budaya luar", "D. Menghapus perbedaan daerah"], ans: 0 } // Kunci: A
+            { q: "Hukum dasar tertulis tertinggi di Indonesia adalah...", opts: ["A. Pancasila", "B. UUD NRI Tahun 1945", "C. Perpres", "D. Keputusan Menteri"], ans: 1 },
+            { q: "Lembaga negara yang berwenang mengubah dan menetapkan UUD 1945 adalah...", opts: ["A. Presiden", "B. DPR", "C. MA", "D. MPR"], ans: 3 },
+            { q: "Norma yang bersumber dari hati nurani manusia sendiri disebut norma...", opts: ["A. Kesusilaan", "B. Agama", "C. Kesopanan", "D. Hukum"], ans: 0 },
+            { q: "Pelanggaran terhadap norma hukum akan mendapatkan sanksi yang bersifat...", opts: ["A. Dicemooh masyarakat", "B. Dosa", "C. Tegas dan mengikat", "D. Rasa menyesal"], ans: 2 },
+            { q: "Semboyan Bhinneka Tunggal Ika dipetik dari kitab Kakawin Sutasoma karangan...", opts: ["A. Mpu Gandring", "B. Mpu Prapanca", "C. Mpu Tantular", "D. Mpu Sedah"], ans: 2 }
         ],
         bindo: [
-            { q: "Teks yang memberikan panduan langkah-langkah untuk melakukan sesuatu secara berurutan disebut...", opts: ["A. Teks LHO", "B. Teks Narasi", "C. Teks Prosedur", "D. Teks Eksplanasi"], ans: 2 }, // Kunci: C
-            { q: "Di bawah ini yang merupakan contoh kalimat imperatif (perintah) adalah...", opts: ["A. Ibu memasak di dapur.", "B. Tuangkan 2 sendok gula ke dalam cangkir!", "C. Apakah kamu suka teh manis?", "D. Nasi goreng adalah makanan favoritku."], ans: 1 }, // Kunci: B
-            { q: "Bagian teks LHO yang memuat informasi detail tentang objek yang diamati disebut...", opts: ["A. Deskripsi bagian", "B. Pernyataan umum", "C. Deskripsi manfaat", "D. Kesimpulan"], ans: 0 } // Kunci: A
+            { q: "Teks yang berisi urutan langkah-langkah membuat atau melakukan sesuatu dinamakan...", opts: ["A. Teks LHO", "B. Teks Narasi", "C. Teks Prosedur", "D. Teks Eksplanasi"], ans: 2 },
+            { q: "Manakah di bawah ini yang merupakan kalimat perintah (imperatif)?", opts: ["A. Ibu membeli sayur", "B. Aduk adonan hingga merata!", "C. Apakah teh ini manis?", "D. Saya suka makan bakso"], ans: 1 },
+            { q: "Teks Laporan Hasil Observasi ditulis berdasarkan...", opts: ["A. Khayalan penulis", "B. Hasil pengamatan nyata/objektif", "C. Dongeng", "D. Opini pribadi"], ans: 1 },
+            { q: "Bagian pertama dari struktur Teks LHO memuat...", opts: ["A. Pernyataan umum / Klasifikasi", "B. Deskripsi bagian", "C. Deskripsi manfaat", "D. Langkah-langkah"], ans: 0 },
+            { q: "Kata 'Tuangkan', 'Masukan', 'Aduklah' dalam teks prosedur termasuk jenis kata...", opts: ["A. Benda", "B. Sifat", "C. Kerja imperatif", "D. Hubungan"], ans: 2 }
         ],
         akidah: [
-            { q: "Allah SWT Maha Melihat segala hal yang gaib maupun yang nyata. Hal ini sesuai dengan Asmaul Husna...", opts: ["A. Al-'Alim", "B. As-Sami'", "C. Al-Khabir", "D. Al-Bashir"], ans: 3 }, // Kunci: D
-            { q: "Sikap teguh dan konsisten dalam menjalankan kebaikan serta kebenaran disebut...", opts: ["A. Taubat", "B. Istiqamah", "C. Ikhlas", "D. Ta'at"], ans: 1 }, // Kunci: B
-            { q: "Seseorang yang beramal hanya karena ingin mengharap ridha Allah SWT tanpa pamijian manusia berarti memiliki sifat...", opts: ["A. Ikhlas", "B. Sombong", "C. Riya'", "D. Hemat"], ans: 0 } // Kunci: A
+            { q: "Allah SWT Maha Melihat segala sesuatu yang tampak maupun gaib. Hal ini sesuai Asmaul Husna...", opts: ["A. Al-'Alim", "B. As-Sami'", "C. Al-Khabir", "D. Al-Bashir"], ans: 3 },
+            { q: "Asmaul Husna Al-'Alim mengandung arti bahwa Allah SWT...", opts: ["A. Maha Teliti", "B. Maha Mengetahui", "C. Maha Mendengar", "D. Maha Bijaksana"], ans: 1 },
+            { q: "Sikap teguh pendirian dan konsisten dalam menjalankan kebaikan disebut...", opts: ["A. Taubat", "B. Istiqamah", "C. Ikhlas", "D. Ta'at"], ans: 1 },
+            { q: "Beramal secara tulus semata-mata hanya karena Allah SWT dinamakan...", opts: ["A. Ikhlas", "B. Riya'", "C. Takabur", "D. Sum'ah"], ans: 0 },
+            { q: "Allah SWT Maha Mengetahui perkara yang detail dan tersembunyi karena Allah memiliki sifat...", opts: ["A. As-Sami'", "B. Al-Bashir", "C. Al-Khabir", "D. Ar-Rahman"], ans: 2 }
         ],
         ips: [
-            { q: "Letak suatu tempat berdasarkan koordinat garis lintang dan garis bujur dinamakan lokasi...", opts: ["A. Relatif", "B. Absolut", "C. Strategis", "D. Geografis"], ans: 1 }, // Kunci: B
-            { q: "Abu vulkanik yang dikeluarkan saat erupsi gunung berapi bermanfaat bagi pertanian karena...", opts: ["A. Merusak hama", "B. Mengandung unsur hara yang menyuburkan tanah", "C. Mengubah iklim wilayah", "D. Menghasilkan air irigasi"], ans: 1 }, // Kunci: B
-            { q: "Hubungan antara jarak distribusi dan harga barang konsumen di pasar yang benar adalah...", opts: ["A. Makin jauh jarak, makin murah harganya", "B. Jarak tidak mempengaruhi harga", "C. Makin jauh jarak, makin mahal harganya karena biaya angkut", "D. Makin dekat jarak, makin mahal harganya"], ans: 2 } // Kunci: C
+            { q: "Letak suatu wilayah yang berdasarkan garis lintang dan garis bujur dinamakan lokasi...", opts: ["A. Relatif", "B. Absolut", "C. Geografis", "D. Strategis"], ans: 1 },
+            { q: "Indonesia mengalami musim hujan saat bertiup angin...", opts: ["A. Muson Barat", "B. Muson Timur", "C. Darat", "D. Laut"], ans: 0 },
+            { q: "Konstruksi rumah panggung tradisional kayu sangat berguna sebagai bentuk mitigasi...", opts: ["A. Banjir saja", "B. Guncangan gempa bumi", "C. Angin puting beliung", "D. Tsunami"], ans: 1 },
+            { q: "Bagaimana hubungan antara jarak distribusi barang dan harganya?", opts: ["A. Semakin jauh, semakin murah", "B. Semakin jauh, semakin mahal", "C. Jarak tidak berpengaruh", "D. Semakin dekat, semakin mahal"], ans: 1 },
+            { q: "Letak astronomis Indonesia adalah...", opts: ["A. $6^\circ\text{LU}-11^\circ\text{LS}$ dan $95^\circ\text{BT}-141^\circ\text{BT}$", "B. $10^\circ\text{LU}-15^\circ\text{LS}$", "C. $0^\circ\text{LU}-10^\circ\text{LS}$", "D. $90^\circ\text{BT}-120^\circ\text{BT}$"], ans: 0 }
         ],
         bing: [
-            { q: "Which of the following tastes is correct for 'Lemon'?", opts: ["A. Sweet", "B. Salty", "C. Sour", "D. Bitter"], ans: 2 }, // Kunci: C
-            { q: "Complete the sentence: 'She ... not like spicy food.'", opts: ["A. do", "B. does", "C. is", "D. are"], ans: 1 }, // Kunci: B
-            { q: "What expression is used when you want to introduce yourself?", opts: ["A. Goodbye, my friend", "B. Thank you very much", "C. Let me introduce myself", "D. See you tomorrow"], ans: 2 }, // Kunci: C
-            { q: "They ... fried rice every Sunday morning.", opts: ["A. eat", "B. eats", "C. eating", "D. ate"], ans: 0 } // Kunci: A
+            { q: "What is the taste of 'Lemon'?", opts: ["A. Sweet", "B. Salty", "C. Sour", "D. Spicy"], ans: 2 },
+            { q: "He ... not like spicy food.", opts: ["A. do", "B. does", "C. is", "D. are"], ans: 1 },
+            { q: "Select the sentence used to introduce oneself:", opts: ["A. Nice to meet you", "B. Let me introduce myself", "C. Good night", "D. See you later"], ans: 1 },
+            { q: "They ... fried chicken every day.", opts: ["A. eat", "B. eats", "C. eating", "D. ate"], ans: 0 },
+            { q: "Which of the following tastes means 'Asin'?", opts: ["A. Bitter", "B. Sweet", "C. Salty", "D. Savory"], ans: 2 }
         ]
     };
 
     const essayData = {
         pkn: [
-            { q: "Jelaskan makna semboyan Bhinneka Tunggal Ika dalam kehidupan masyarakat Indonesia!", key: "Bhinneka Tunggal Ika berarti berbeda-beda tetapi tetap satu jua. Maknanya adalah meskipun Indonesia terdiri dari beragam suku, agama, ras, dan budaya, seluruh rakyat tetap merupakan satu kesatuan bangsa yang utuh." }
+            { q: "Jelaskan perbedaan sanksi antara norma hukum dan norma kesopanan!", key: "Sanksi norma hukum bersifat tegas, mengikat, dan dipaksakan oleh negara (seperti denda/penjara). Sanksi norma kesopanan berupa cemoohan, celaan, atau dikucilkan dari masyarakat." },
+            { q: "Sebutkan 4 kali periode amandemen UUD NRI 1945!", key: "Amandemen ke-1 (1999), ke-2 (2000), ke-3 (2001), dan ke-4 (2002)." }
         ],
         bindo: [
-            { q: "Sebutkan 3 bagian struktur utama dalam Teks Prosedur!", key: "1. Tujuan, 2. Alat dan Bahan, 3. Langkah-langkah pengerjaan." }
+            { q: "Sebutkan dan jelaskan struktur Teks Laporan Hasil Observasi (LHO)!", key: "1. Pernyataan Umum (penjelasan awal objek), 2. Deskripsi Bagian (detail rincian objek), 3. Deskripsi Manfaat (kegunaan objek)." },
+            { q: "Buatlah 2 contoh kalimat perintah/imperatif dalam Teks Prosedur!", key: "Contoh: 1) Rebuslah air hingga mendidih! 2) Tambahkan 1 sendok garam ke dalam sup!" }
         ],
         akidah: [
-            { q: "Jelaskan perbedaan makna antara Asmaul Husna Al-'Alim dan Al-Khabir!", key: "Al-'Alim artinya Maha Mengetahui segala sesuatu baik yang tampak maupun gaib. Sedangkan Al-Khabir artinya Maha Teliti/Waspada, yaitu mengetahui detail tersembunyi dari segala hal." }
+            { q: "Apa perbedaan sifat Allah SWT Al-'Alim dan Al-Khabir?", key: "Al-'Alim artinya Maha Mengetahui segala sesuatu secara menyeluruh. Al-Khabir artinya Maha Teliti, mengetahui sampai hal sekecil-kecilnya dan tersembunyi." },
+            { q: "Berikan 2 contoh perilaku istiqamah di sekolah!", key: "1) Selalu datang tepat waktu setiap hari, 2) Rutin belajar dan mengerjakan piket kelas tanpa ditunjuk." }
         ],
         ips: [
-            { q: "Mengapa rumah tradisional panggung dirancang sebagai bentuk mitigasi bencana geologi?", key: "Karena struktur tiang kayu fleksibel dan fondasi batu tumpu dapat meredam getaran saat terjadi gempa bumi sehingga bangunan tidak mudah roboh." }
+            { q: "Mengapa rumah panggung kayu cocok dijadikan rumah tahan gempa?", key: "Karena sambungan kayu pada rumah panggung bersifat fleksibel sehingga dapat menyerap dan meredam getaran gempa tanpa mudah roboh." },
+            { q: "Mengapa biaya transportasi mempengaruhi harga barang di daerah terpencil?", key: "Karena semakin jauh jarak yang ditempuh, bahan bakar dan operasional transportasi makin tinggi, sehingga biaya tersebut ditambahkan ke harga jual barang." }
         ],
         bing: [
-            { q: "Change this positive sentence into negative (-): 'He drinks iced tea.'", key: "He does not drink iced tea." }
+            { q: "Change this positive sentence into negative (-): 'She eats fried rice.'", key: "She does not eat fried rice." },
+            { q: "Mention 4 words related to food tastes in English with their meanings!", key: "1. Sweet (Manis), 2. Salty (Asin), 3. Spicy (Pedas), 4. Sour (Asam)." }
         ]
     };
+
+    function startTimer() {
+        if(timerInterval) clearInterval(timerInterval);
+        timerInterval = setInterval(() => {
+            if(timerSeconds <= 0) {
+                clearInterval(timerInterval);
+                alert('Waktu Pengerjaan Kuis Habis!');
+            } else {
+                timerSeconds--;
+                let m = Math.floor(timerSeconds / 60);
+                let s = timerSeconds % 60;
+                document.getElementById('time-display').innerText = `${m}:${s < 10 ? '0' : ''}${s}`;
+            }
+        }, 1000);
+    }
 
     function switchTab(tab) {
         currentTab = tab;
@@ -234,6 +300,7 @@
             document.querySelectorAll('.sub-panel').forEach(p => p.style.display = 'none');
             document.getElementById(`rangkuman-${currentSubject}`).style.display = 'block';
         } else if (currentTab === 'quiz') {
+            startTimer();
             const container = document.getElementById('quiz-container');
             container.innerHTML = quizData[currentSubject].map((item, index) => `
                 <div class="card">
@@ -250,9 +317,11 @@
                     <p><b>Soal ${index + 1}: ${item.q}</b></p>
                     <textarea placeholder="Ketik jawabanmu di sini..."></textarea>
                     <button class="action-btn" onclick="this.nextElementSibling.style.display='block'">Lihat Pembahasan / Kunci</button>
-                    <div style="display:none; margin-top:10px; color:#34d399; font-size:0.9rem;"><b>Kunci Jawaban:</b> ${item.key}</div>
+                    <div style="display:none; margin-top:10px; color:var(--success); font-size:0.9rem;"><b>Kunci Jawaban:</b> ${item.key}</div>
                 </div>
             `).join('');
+        } else if (currentTab === 'notes') {
+            document.getElementById('userNote').value = localStorage.getItem('pts_user_note') || '';
         }
     }
 
@@ -261,9 +330,30 @@
         parent.querySelectorAll('.opt-btn').forEach(b => b.disabled = true);
         if (isCorrect) {
             btn.classList.add('correct');
+            score += 20;
+            document.getElementById('score-display').innerText = score;
         } else {
             btn.classList.add('wrong');
         }
+    }
+
+    function resetQuiz() {
+        score = 0;
+        timerSeconds = 900;
+        document.getElementById('score-display').innerText = score;
+        renderContent();
+    }
+
+    function toggleTheme() {
+        document.body.classList.toggle('light-theme');
+    }
+
+    function saveNote() {
+        const val = document.getElementById('userNote').value;
+        localStorage.setItem('pts_user_note', val);
+        const msg = document.getElementById('noteSavedMsg');
+        msg.style.display = 'inline';
+        setTimeout(() => msg.style.display = 'none', 2000);
     }
 
     function searchContent() {
