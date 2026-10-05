@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ruang Belajar PTS Kelas 7 - Professional Edition</title>
+    <title>Ruang Belajar PTS Kelas 7 - Fixed Edition</title>
     <!-- Google Fonts & FontAwesome Icons -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -12,11 +12,9 @@
         :root {
             --primary: #0056b3;
             --primary-gradient: linear-gradient(135deg, #0066ff 0%, #00d2ff 100%);
-            --secondary-gradient: linear-gradient(135deg, #ff9900 0%, #ff5500 100%);
             --bg-main: #f4f7fe;
             --bg-card: #ffffff;
             --text-dark: #1b2559;
-            --text-gray: #a3edff;
             --text-muted: #8f9bba;
             --success: #05cd99;
             --danger: #ee5d50;
@@ -25,20 +23,19 @@
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; -webkit-tap-highlight-color: transparent; }
-        body { background-color: var(--bg-main); color: var(--text-dark); padding-bottom: 90px; }
+        body { background-color: var(--bg-main); color: var(--text-dark); padding-bottom: 100px; }
 
-        /* HEADER RUANGGURU STYLE */
+        /* HEADER */
         header {
             background: var(--primary-gradient);
-            padding: 25px 20px 40px 20px;
+            padding: 25px 20px 35px 20px;
             border-bottom-left-radius: 30px;
             border-bottom-right-radius: 30px;
             color: #fff;
             box-shadow: 0 10px 20px rgba(0, 102, 255, 0.2);
-            position: relative;
         }
 
-        .header-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
+        .header-top { display: flex; justify-content: space-between; align-items: center; }
         .user-profile { display: flex; align-items: center; gap: 12px; }
         .avatar { width: 45px; height: 45px; background: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--primary); font-weight: 800; font-size: 1.2rem; }
         .user-info h2 { font-size: 1rem; font-weight: 700; }
@@ -69,7 +66,7 @@
         .container { max-width: 800px; margin: 0 auto; padding: 0 18px; }
         .stats-card {
             background: var(--bg-card);
-            margin-top: -25px;
+            margin-top: -20px;
             border-radius: var(--border-radius);
             padding: 18px;
             box-shadow: var(--shadow-soft);
@@ -81,13 +78,13 @@
         .stat-item p { font-size: 0.75rem; color: var(--text-muted); font-weight: 600; }
 
         /* SUBJECT SELECTOR */
-        .section-title { font-size: 1.1rem; font-weight: 700; margin: 20px 0 12px 0; color: var(--text-dark); display: flex; align-items: center; justify-content: space-between; }
-        .subject-scroll { display: flex; gap: 12px; overflow-x: auto; padding-bottom: 10px; scrollbar-width: none; }
+        .section-title { font-size: 1.1rem; font-weight: 700; margin: 20px 0 12px 0; color: var(--text-dark); }
+        .subject-scroll { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 10px; scrollbar-width: none; }
         .subject-scroll::-webkit-scrollbar { display: none; }
 
         .subject-chip {
             background: var(--bg-card);
-            padding: 10px 18px;
+            padding: 10px 16px;
             border-radius: 15px;
             white-space: nowrap;
             font-weight: 700;
@@ -96,12 +93,11 @@
             box-shadow: var(--shadow-soft);
             cursor: pointer;
             border: 2px solid transparent;
-            transition: all 0.3s ease;
+            user-select: none;
         }
         .subject-chip.active {
             background: var(--primary-gradient);
             color: #fff;
-            border-color: #fff;
         }
 
         /* CARD STYLE */
@@ -112,7 +108,6 @@
             margin-bottom: 16px;
             box-shadow: var(--shadow-soft);
             border: 1px solid #e9edf7;
-            position: relative;
         }
         .card h3 { color: var(--primary); font-size: 1.05rem; margin-bottom: 12px; font-weight: 700; display: flex; justify-content: space-between; align-items: center; }
         .card ul { padding-left: 20px; color: #475569; font-size: 0.92rem; line-height: 1.7; }
@@ -130,7 +125,6 @@
         }
 
         /* QUIZ STYLING */
-        .quiz-card { margin-bottom: 15px; }
         .opt-btn {
             width: 100%;
             text-align: left;
@@ -143,7 +137,6 @@
             cursor: pointer;
             font-weight: 600;
             font-size: 0.88rem;
-            transition: all 0.2s;
         }
         .opt-btn:hover { border-color: var(--primary); background: #eef6ff; }
         .opt-btn.correct { background: #d1fae5 !important; border-color: var(--success) !important; color: #065f46 !important; }
@@ -162,9 +155,9 @@
             box-shadow: 0 -5px 25px rgba(0,0,0,0.08);
             border-top-left-radius: 20px;
             border-top-right-radius: 20px;
-            z-index: 1000;
+            z-index: 9999;
         }
-        .nav-item { display: flex; flex-direction: column; align-items: center; color: var(--text-muted); text-decoration: none; font-size: 0.75rem; font-weight: 700; cursor: pointer; }
+        .nav-item { display: flex; flex-direction: column; align-items: center; color: var(--text-muted); font-size: 0.75rem; font-weight: 700; cursor: pointer; user-select: none; }
         .nav-item i { font-size: 1.2rem; margin-bottom: 4px; }
         .nav-item.active { color: var(--primary); }
 
@@ -192,7 +185,7 @@
 
         <div class="search-container">
             <i class="fa-solid fa-magnifying-glass"></i>
-            <input type="text" id="searchInput" placeholder="Cari materi, konsep, atau kisi-kisi..." oninput="searchContent()">
+            <input type="text" id="searchInput" placeholder="Cari materi..." onkeyup="searchContent()">
         </div>
     </header>
 
@@ -200,11 +193,11 @@
         <!-- STATS -->
         <div class="stats-card">
             <div class="stat-item">
-                <h4 id="stat-subject">5</h4>
+                <h4>5</h4>
                 <p>Mata Pelajaran</p>
             </div>
             <div class="stat-item">
-                <h4 id="stat-quiz">30</h4>
+                <h4>30</h4>
                 <p>Soal Latihan</p>
             </div>
             <div class="stat-item">
@@ -214,16 +207,13 @@
         </div>
 
         <!-- SUBJECT SELECTOR -->
-        <div class="section-title">
-            <span>Pilih Mata Pelajaran</span>
-        </div>
-
+        <div class="section-title">Pilih Mata Pelajaran</div>
         <div class="subject-scroll">
-            <div class="subject-chip active" onclick="selectSubject('ips')">🌏 IPS (19 Point)</div>
-            <div class="subject-chip" onclick="selectSubject('bing')">🇬🇧 B. Inggris</div>
-            <div class="subject-chip" onclick="selectSubject('pkn')">🇮🇩 PPKn</div>
-            <div class="subject-chip" onclick="selectSubject('bindo')">📚 B. Indonesia</div>
-            <div class="subject-chip" onclick="selectSubject('akidah')">🕌 Akidah Akhlak</div>
+            <div class="subject-chip active" onclick="selectSubject('ips', this)">🌏 IPS</div>
+            <div class="subject-chip" onclick="selectSubject('bing', this)">🇬🇧 B. Inggris</div>
+            <div class="subject-chip" onclick="selectSubject('pkn', this)">🇮🇩 PPKn</div>
+            <div class="subject-chip" onclick="selectSubject('bindo', this)">📚 B. Indonesia</div>
+            <div class="subject-chip" onclick="selectSubject('akidah', this)">🕌 Akidah Akhlak</div>
         </div>
 
         <!-- TAB CONTENT: RANGKUMAN -->
@@ -232,33 +222,16 @@
                 <div class="card searchable">
                     <h3>1. Lokasi Absolut vs Relatif <button class="audio-btn" onclick="speakText(this)"><i class="fa-solid fa-volume-high"></i> Baca</button></h3>
                     <ul>
-                        <li><b>Lokasi Absolut:</b> Letak berdasarkan garis astronomis/koordinat (sifatnya tetap). Contoh: Indonesia di $6^\circ\text{LU}-11^\circ\text{LS}$ dan $95^\circ\text{BT}-141^\circ\text{BT}$.</li>
+                        <li><b>Lokasi Absolut:</b> Letak berdasarkan garis astronomis/koordinat (sifatnya tetap). Contoh: Indonesia di 6°LU-11°LS dan 95°BT-141°BT.</li>
                         <li><b>Lokasi Relatif:</b> Letak berdasarkan kondisi geografis wilayah sekitar (sifatnya berubah-ubah). Contoh: Indonesia di antara Benua Asia dan Australia.</li>
                     </ul>
                 </div>
                 <div class="card searchable">
-                    <h3>2. Komponen Peta & Karakteristik Garis Astronomis</h3>
+                    <h3>2. Iklim & Letak Geologis <button class="audio-btn" onclick="speakText(this)"><i class="fa-solid fa-volume-high"></i> Baca</button></h3>
                     <ul>
-                        <li><b>Komponen Peta:</b> Judul, Skala, Orientasi (arah mata angin), Simbol, Legenda, Garis Astronomis, Inset, Sumber & Tahun Pembuatan.</li>
-                        <li><b>Garis Lintang:</b> Garis khayal mendatar yang menentukan pembagian zona iklim matahari (Tropis, Subtropis, Sedang, Dingin).</li>
-                        <li><b>Garis Bujur:</b> Garis khayal tegak yang menentukan pembagian waktu (pergeseran $15^\circ = 1 \text{ jam}$).</li>
-                    </ul>
-                </div>
-                <div class="card searchable">
-                    <h3>3. Iklim, Angin Muson, & Letak Geologis</h3>
-                    <ul>
-                        <li><b>Iklim Tropis:</b> Menyerap sinar matahari sepanjang tahun, curah hujan tinggi, mendukung sektor agraris dan pariwisata.</li>
-                        <li><b>Angin Muson Barat (Okt-Apr):</b> Meniup dari Asia ke Australia membawa uap air $\rightarrow$ **Musim Hujan**.</li>
-                        <li><b>Angin Muson Timur (Apr-Okt):</b> Meniup dari Australia ke Asia bersifat kering $\rightarrow$ **Musim Kemarau**.</li>
-                        <li><b>Letak Geologis:</b> Pertemuan 3 lempeng tektonik (Indo-Australia, Eurasia, Pasifik). Abu vulkanik hasil erupsi membuat tanah sangat subur.</li>
+                        <li><b>Angin Muson Barat (Okt-Apr):</b> Meniup dari Asia ke Australia membawa uap air -> <b>Musim Hujan</b>.</li>
+                        <li><b>Angin Muson Timur (Apr-Okt):</b> Meniup dari Australia ke Asia bersifat kering -> <b>Musim Kemarau</b>.</li>
                         <li><b>Kearifan Lokal Mitigasi:</b> Rumah Panggung kayu fleksibel meredam getaran gempa bumi.</li>
-                    </ul>
-                </div>
-                <div class="card searchable">
-                    <h3>4. Ekonomi & Distribusi</h3>
-                    <ul>
-                        <li><b>Kegiatan Ekonomi:</b> Produksi (membuat), Distribusi (menyalurkan), Konsumsi (menggunakan).</li>
-                        <li><b>Hubungan Jarak & Harga:</b> Semakin jauh jarak distribusi, semakin tinggi biaya transportasi, sehingga harga barang di konsumen semakin mahal.</li>
                     </ul>
                 </div>
             </div>
@@ -268,65 +241,43 @@
                     <h3>1. Chapter 1: Introduction <button class="audio-btn" onclick="speakText(this)"><i class="fa-solid fa-volume-high"></i> Baca</button></h3>
                     <ul>
                         <li><b>Opening:</b> "Hello, let me introduce myself." / "Hi, I would like to introduce myself."</li>
-                        <li><b>Details:</b> Name ("My name is..."), Age ("I am 12 years old"), Address ("I live in..."), Hobby ("My hobby is...").</li>
-                    </ul>
-                </div>
-                <div class="card searchable">
-                    <h3>2. Favorite Food & Tastes</h3>
-                    <ul>
-                        <li><b>Taste Vocabulary:</b> Sweet (Manis), Salty (Asin), Spicy/Hot (Pedas), Savory (Gurih), Sour (Asam), Bitter (Pahit).</li>
-                        <li><b>Texture:</b> Crunchy/Crispy (Renyah). Example: "I like spicy noodle because it is delicious."</li>
-                    </ul>
-                </div>
-                <div class="card searchable">
-                    <h3>3. Simple Present Tense</h3>
-                    <ul>
-                        <li><b>Verbal (+):</b> $S + V_1(s/es) \rightarrow$ <i>She eats spicy food.</i></li>
-                        <li><b>Verbal (-):</b> $S + \text{does/do not} + V_1 \rightarrow$ <i>They do not like coffee.</i></li>
-                        <li><b>Nominal (+):</b> $S + \text{is/am/are} + \text{Adjective} \rightarrow$ <i>The burger is delicious.</i></li>
+                        <li><b>Taste Vocabulary:</b> Sweet (Manis), Salty (Asin), Spicy (Pedas), Savory (Gurih), Sour (Asam).</li>
                     </ul>
                 </div>
             </div>
 
             <div id="materi-pkn" class="sub-panel" style="display:none;">
                 <div class="card searchable">
-                    <h3>UUD NRI 1945 & Norma Masyarakat <button class="audio-btn" onclick="speakText(this)"><i class="fa-solid fa-volume-high"></i> Baca</button></h3>
+                    <h3>UUD NRI 1945 & Norma <button class="audio-btn" onclick="speakText(this)"><i class="fa-solid fa-volume-high"></i> Baca</button></h3>
                     <ul>
                         <li><b>Kedudukan UUD 1945:</b> Hukum dasar tertulis tertinggi di Indonesia.</li>
-                        <li><b>Amandemen:</b> MPR telah melakukan 4 kali perubahan UUD 1945 (1999–2002).</li>
-                        <li><b>Jenis Norma:</b> Agama (sanksi dosa), Kesusilaan (sanksi penyesalan), Kesopanan (sanksi dicemooh), Hukum (sanksi tegas/penjara).</li>
-                        <li><b>Bhinneka Tunggal Ika:</b> Semboyan persatuan dari Kakawin Sutasoma karya Mpu Tantular.</li>
+                        <li><b>Jenis Norma:</b> Agama (dosa), Kesusilaan (penyesalan), Kesopanan (dicemooh), Hukum (penjara/denda).</li>
                     </ul>
                 </div>
             </div>
 
             <div id="materi-bindo" class="sub-panel" style="display:none;">
                 <div class="card searchable">
-                    <h3>Teks Prosedur & Laporan Hasil Observasi (LHO) <button class="audio-btn" onclick="speakText(this)"><i class="fa-solid fa-volume-high"></i> Baca</button></h3>
+                    <h3>Teks Prosedur & LHO <button class="audio-btn" onclick="speakText(this)"><i class="fa-solid fa-volume-high"></i> Baca</button></h3>
                     <ul>
-                        <li><b>Teks Prosedur:</b> Berisi langkah-langkah sistematis. Ciri bahasa: Menggunakan kata kerja imperatif (perintah).</li>
-                        <li><b>Struktur Prosedur:</b> Tujuan $\rightarrow$ Alat/Bahan $\rightarrow$ Langkah-langkah $\rightarrow$ Penutup.</li>
+                        <li><b>Teks Prosedur:</b> Langkah-langkah sistematis menggunakan kata kerja imperatif (perintah).</li>
                         <li><b>Teks LHO:</b> Menyajikan data objektif dan faktual dari hasil pengamatan.</li>
-                        <li><b>Struktur LHO:</b> Pernyataan Umum $\rightarrow$ Deskripsi Bagian $\rightarrow$ Deskripsi Manfaat.</li>
                     </ul>
                 </div>
             </div>
 
             <div id="materi-akidah" class="sub-panel" style="display:none;">
                 <div class="card searchable">
-                    <h3>Asmaul Husna & Akhlak Terpuji <button class="audio-btn" onclick="speakText(this)"><i class="fa-solid fa-volume-high"></i> Baca</button></h3>
+                    <h3>Asmaul Husna <button class="audio-btn" onclick="speakText(this)"><i class="fa-solid fa-volume-high"></i> Baca</button></h3>
                     <ul>
                         <li><b>Al-'Alim:</b> Maha Mengetahui segala sesuatu.</li>
                         <li><b>Al-Khabir:</b> Maha Teliti/Waspada terhadap detail tersembunyi.</li>
-                        <li><b>As-Sami':</b> Maha Mendengar segala doa.</li>
-                        <li><b>Al-Bashir:</b> Maha Melihat seluruh perbuatan.</li>
-                        <li><b>Akhlak Terpuji:</b> Taubat, Ta'at, Istiqamah (konsisten), dan Ikhlas (tulus).</li>
                     </ul>
                 </div>
             </div>
         </div>
 
-        <!-- TAB CONTENT: KUIS 30 SOAL -->
+        <!-- TAB CONTENT: KUIS -->
         <div id="panel-quiz" class="panel">
             <div id="quiz-container"></div>
         </div>
@@ -339,9 +290,8 @@
         <!-- TAB CONTENT: CATATAN -->
         <div id="panel-notes" class="panel">
             <div class="card">
-                <h3><i class="fa-solid fa-pen-to-square"></i> Catatan Belajar Kamu</h3>
-                <p style="font-size:0.8rem; color:var(--text-muted);">Ketik catatan pelajaranmu di sini. Otomatis tersimpan secara permanen di HP kamu!</p>
-                <textarea id="userNote" placeholder="Tulis rangkuman tambahan atau pengingat kuis di sini..."></textarea>
+                <h3><i class="fa-solid fa-pen-to-square"></i> Catatan Belajar</h3>
+                <textarea id="userNote" placeholder="Tulis catatanmu di sini..."></textarea>
                 <button class="btn-action" onclick="saveNote()"><i class="fa-solid fa-floppy-disk"></i> Simpan Catatan</button>
             </div>
         </div>
@@ -367,22 +317,107 @@
         </div>
     </div>
 
-<script>
-    let currentSubject = 'ips';
-    let userScore = 0;
+    <!-- SCRIPT JAVASCRIPT DIPINDAHKAN KE DALAM BODY SUPAYA DIJALANKAN DENGAN SEMPURNA -->
+    <script>
+        var currentSubject = 'ips';
+        var userScore = 0;
 
-    // BANK 30 SOAL PG DENGAN JAWABAN VARIATIF (A, B, C, D)
-    const quizData = {
-        ips: [
-            { q: "Letak astronomis Indonesia di 6°LU-11°LS dinamakan lokasi...", opts: ["A. Relatif", "B. Absolut", "C. Geografis", "D. Geologis"], ans: 1 }, // B
-            { q: "Angin Muson Barat yang meniup dari Asia ke Australia membawa dampak...", opts: ["A. Musim Kemarau", "B. Musim Pancaroba", "C. Musim Hujan", "D. Badai Salju"], ans: 2 }, // C
-            { q: "Rumah panggung kayu tradisional efektif dalam mitigasi bencana geologi berupa...", opts: ["A. Tsunami", "B. Banjir Rob", "C. Tanah Longsor", "D. Guncangan Gempa Bumi"], ans: 3 }, // D
-            { q: "Semakin jauh jarak distribusi barang dari produsen ke konsumen, maka harga jual barang akan...", opts: ["A. Makin murah", "B. Makin mahal karena biaya transportasi", "C. Tetap stabil", "D. Gratis"], ans: 1 }, // B
-            { q: "Komponen peta yang berfungsi menjelaskan simbol-simbol peta dinamakan...", opts: ["A. Legenda", "B. Judul", "C. Inset", "D. Orientasi"], ans: 0 }, // A
-            { q: "Pelapukan abu vulkanik akibat erupsi gunung berapi berdampak positif bagi sektor...", opts: ["A. Industri manufaktur", "B. Pertanian karena menyuburkan tanah", "C. Perikanan laut", "D. Pertambangan batu bara"], ans: 1 } // B
-        ],
-        bing: [
-            { q: "Which expression is suitable for introducing yourself?", opts: ["A. See you tomorrow", "B. Good night", "C. Let me introduce myself", "D. I am fine thank you"], ans: 2 }, // C
-            { q: "Lemon has a very strong ... taste.", opts: ["A. Sweet", "B. Sour", "C. Salty", "D. Bitter"], ans: 1 }, // B
-            { q: "She ... not like spicy food.", opts: ["A. do", "B. does", "C. is", "D. are"], ans: 1 }, // B
-            { q: "They alway
+        var quizData = {
+            ips: [
+                { q: "Letak astronomis Indonesia di 6°LU-11°LS dinamakan lokasi...", opts: ["A. Relatif", "B. Absolut", "C. Geografis", "D. Geologis"], ans: 1 },
+                { q: "Angin Muson Barat membawa dampak berupa...", opts: ["A. Musim Kemarau", "B. Musim Pancaroba", "C. Musim Hujan", "D. Salju"], ans: 2 },
+                { q: "Rumah panggung kayu efektif meredam bencana...", opts: ["A. Tsunami", "B. Banijr", "C. Tanah Longsor", "D. Gempa Bumi"], ans: 3 }
+            ],
+            bing: [
+                { q: "Which expression is suitable for introducing yourself?", opts: ["A. See you", "B. Good night", "C. Let me introduce myself", "D. Fine thanks"], ans: 2 },
+                { q: "Lemon has a very strong ... taste.", opts: ["A. Sweet", "B. Sour", "C. Salty", "D. Bitter"], ans: 1 }
+            ],
+            pkn: [
+                { q: "Hukum dasar tertulis tertinggi di NKRI adalah...", opts: ["A. Pancasila", "B. UUD NRI Tahun 1945", "C. Perpres", "D. Perda"], ans: 1 },
+                { q: "UUD NRI Tahun 1945 telah mengalami amandemen sebanyak...", opts: ["A. 2 kali", "B. 3 kali", "C. 4 kali", "D. 5 kali"], ans: 2 }
+            ],
+            bindo: [
+                { q: "Teks yang berisi urutan langkah-langkah disebut...", opts: ["A. Teks LHO", "B. Teks Narasi", "C. Teks Prosedur", "D. Teks Eksplanasi"], ans: 2 },
+                { q: "Manakah contoh kata kerja imperatif?", opts: ["A. Memasak", "B. Tuangkan!", "C. Dimakan", "D. Tergoreng"], ans: 1 }
+            ],
+            akidah: [
+                { q: "Allah SWT Maha Melihat segala sesuatu sesuai Asmaul Husna...", opts: ["A. Al-'Alim", "B. As-Sami'", "C. Al-Khabir", "D. Al-Bashir"], ans: 3 },
+                { q: "Asmaul Husna Al-'Alim artinya Allah SWT...", opts: ["A. Maha Mengetahui", "B. Maha Mendengar", "C. Maha Teliti", "D. Maha Melihat"], ans: 0 }
+            ]
+        };
+
+        var essayData = {
+            ips: [{ q: "Mengapa rumah panggung ramah bencana gempa?", key: "Karena kayu bersifat fleksibel sehingga meredam guncangan." }],
+            bing: [{ q: "Change to negative: 'He drinks tea'", key: "He does not drink tea." }],
+            pkn: [{ q: "Sebutkan 4 jenis norma!", key: "Agama, Kesusilaan, Kesopanan, Hukum." }],
+            bindo: [{ q: "Sebutkan struktur teks prosedur!", key: "Tujuan, Alat/Bahan, Langkah-langkah." }],
+            akidah: [{ q: "Apa arti Al-Khabir?", key: "Maha Teliti/Mengetahui detail tersembunyi." }]
+        };
+
+        function selectSubject(sub, el) {
+            currentSubject = sub;
+            var chips = document.querySelectorAll('.subject-chip');
+            chips.forEach(function(c) { c.classList.remove('active'); });
+            el.classList.add('active');
+            renderContent();
+        }
+
+        function switchTab(tab, el) {
+            var items = document.querySelectorAll('.nav-item');
+            items.forEach(function(i) { i.classList.remove('active'); });
+            el.classList.add('active');
+
+            var panels = document.querySelectorAll('.panel');
+            panels.forEach(function(p) { p.classList.remove('active'); });
+            document.getElementById('panel-' + tab).classList.add('active');
+            renderContent();
+        }
+
+        function renderContent() {
+            // Render Materi
+            var subPanels = document.querySelectorAll('.sub-panel');
+            subPanels.forEach(function(sp) { sp.style.display = 'none'; });
+            var activeMateri = document.getElementById('materi-' + currentSubject);
+            if(activeMateri) activeMateri.style.display = 'block';
+
+            // Render Quiz
+            var qContainer = document.getElementById('quiz-container');
+            var currentQuiz = quizData[currentSubject] || [];
+            var htmlQuiz = '';
+            for(var i = 0; i < currentQuiz.length; i++) {
+                var item = currentQuiz[i];
+                htmlQuiz += '<div class="card">';
+                htmlQuiz += '<h3>Soal ' + (i + 1) + '</h3>';
+                htmlQuiz += '<p><b>' + item.q + '</b></p>';
+                for(var j = 0; j < item.opts.length; j++) {
+                    var isCorrect = (j === item.ans);
+                    htmlQuiz += '<button class="opt-btn" onclick="checkAnswer(this, ' + isCorrect + ')">' + item.opts[j] + '</button>';
+                }
+                htmlQuiz += '</div>';
+            }
+            qContainer.innerHTML = htmlQuiz;
+
+            // Render Essay
+            var eContainer = document.getElementById('essay-container');
+            var currentEssay = essayData[currentSubject] || [];
+            var htmlEssay = '';
+            for(var k = 0; k < currentEssay.length; k++) {
+                var eItem = currentEssay[k];
+                htmlEssay += '<div class="card">';
+                htmlEssay += '<h3>Esai ' + (k + 1) + '</h3>';
+                htmlEssay += '<p><b>' + eItem.q + '</b></p>';
+                htmlEssay += '<textarea placeholder="Jawabanmu..."></textarea>';
+                htmlEssay += '<button class="btn-action" onclick="this.nextElementSibling.style.display=\'block\'">Lihat Kunci</button>';
+                htmlEssay += '<div style="display:none; margin-top:10px; color:var(--success); font-weight:600;"><b>Kunci:</b> ' + eItem.key + '</div>';
+                htmlEssay += '</div>';
+            }
+            eContainer.innerHTML = htmlEssay;
+
+            // Load Note
+            document.getElementById('userNote').value = localStorage.getItem('ruang_user_note') || '';
+        }
+
+        function checkAnswer(btn, isCorrect) {
+            var parent = btn.parentElement;
+            var buttons = parent.querySelectorAll('.opt-btn');
+            buttons.forEach(f
